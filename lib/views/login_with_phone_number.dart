@@ -38,13 +38,15 @@ class _LoginWithPhoneState extends State<LoginWithPhone> {
                   TextFormField(
                     keyboardType: TextInputType.number,
                     controller: _phoneNumberController,
-                    decoration: const InputDecoration(labelText: 'Phone number (+xx xxx-xxx-xxxx)'),
+                    decoration: const InputDecoration(
+                        labelText: 'Phone number (+xx xxx-xxx-xxxx)'),
                   ),
                   Container(
                     padding: const EdgeInsets.symmetric(vertical: 16.0),
                     alignment: Alignment.center,
                     child: RaisedButton(child: Text("Get current number"),
-                        onPressed: () async => {
+                        onPressed: () async =>
+                        {
                           _phoneNumberController.text = await _autoFill.hint
                         },
                         color: Colors.greenAccent[700]),
@@ -63,7 +65,8 @@ class _LoginWithPhoneState extends State<LoginWithPhone> {
                   TextFormField(
                     keyboardType: TextInputType.number,
                     controller: _smsController,
-                    decoration: const InputDecoration(labelText: 'Verification code'),
+                    decoration: const InputDecoration(
+                        labelText: 'Verification code'),
                   ),
                   Container(
                     padding: const EdgeInsets.only(top: 16.0),
@@ -86,12 +89,15 @@ class _LoginWithPhoneState extends State<LoginWithPhone> {
     PhoneVerificationCompleted verificationCompleted =
         (PhoneAuthCredential phoneAuthCredential) async {
       await _auth.signInWithCredential(phoneAuthCredential);
-      showSnackbar("Phone number automatically verified and user signed in: ${_auth.currentUser.uid}");
+      showSnackbar(
+          "Phone number automatically verified and user signed in: ${_auth
+              .currentUser.uid}");
     };
 
     PhoneVerificationFailed verificationFailed =
         (FirebaseAuthException authException) {
-      showSnackbar('Phone number verification failed. Code: ${authException.code}. Message: ${authException.message}');
+      showSnackbar('Phone number verification failed. Code: ${authException
+          .code}. Message: ${authException.message}');
     };
 
     PhoneCodeSent codeSent =
@@ -117,8 +123,6 @@ class _LoginWithPhoneState extends State<LoginWithPhone> {
     } catch (e) {
       showSnackbar("Failed to Verify Phone Number: $e");
     }
-
-
   }
 
 
@@ -133,20 +137,22 @@ class _LoginWithPhoneState extends State<LoginWithPhone> {
         smsCode: _smsController.text,
       );
 
-      final User user = (await _auth.signInWithCredential(credential)).user;
+      bool signin = await context.read<AuthenticationService>()
+          .signInWithCredential(
+          credential
+      );
+      if (signin) {
+        Navigator.pop(context);
+      }
 
-      showSnackbar("Successfully signed in UID: ${user.uid}");
 
-      // bool signin = await context.read<AuthenticationService>().signInWithCredential(
-      //     credential
-      // );
-      // if(signin){
-      //   Navigator.pop(context);
-      // }
+      //
+      //   final User user = (await _auth.signInWithCredential(credential)).user;
+      //
+      //   showSnackbar("Successfully signed in UID: ${user.uid}");
+      //
     } catch (e) {
       showSnackbar("Failed to sign in: " + e.toString());
     }
   }
-
-
 }
