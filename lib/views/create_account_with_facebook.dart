@@ -1,10 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
-import 'package:test_login/authentication_service.dart';
-
-import 'package:provider/provider.dart';
 
 
 class CreateAccountWithFacebook extends StatefulWidget {
@@ -31,7 +27,6 @@ class _CreateAccountWithFacebookState extends State<CreateAccountWithFacebook> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
         body: Container(
             padding: EdgeInsets.all(50),
@@ -54,7 +49,9 @@ class _CreateAccountWithFacebookState extends State<CreateAccountWithFacebook> {
                             Icon(Icons.account_circle, color: Colors.white),
                             SizedBox(width: 10),
                             Text(
-                                isUserSignedIn ? 'You\'re logged in with FACEBOOK' : 'Login with FACEBOOK',
+                                isUserSignedIn
+                                    ? 'You\'re logged in with FACEBOOK'
+                                    : 'Login with FACEBOOK',
                                 style: TextStyle(color: Colors.white))
                           ],
                         )
@@ -66,20 +63,21 @@ class _CreateAccountWithFacebookState extends State<CreateAccountWithFacebook> {
   }
 
   void onFacebookSignIn(BuildContext context) async {
-
-
-    print('clucik');
-    setState(() {
-
-    });
-    // Trigger the sign-in flow
-    final AccessToken result = await FacebookAuth.instance.login();
-
-    // Create a credential from the access token
-    final FacebookAuthCredential facebookAuthCredential =
-    FacebookAuthProvider.credential(result.token);
-
-    // Once signed in, return the UserCredential
-     await FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
+    //
+    //
+    //   print('click');
+    //   setState(() {
+    //
+    //   });
+    //   // Trigger the sign-in flow
+    //   final AccessToken result = await FacebookAuth.instance.login();
+    //
+    //   // Create a credential from the access token
+    //   final FacebookAuthCredential facebookAuthCredential =
+    //   FacebookAuthProvider.credential(result.token);
+    //
+    //   // Once signed in, return the UserCredential
+    //    await FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
+    // }
   }
 }
