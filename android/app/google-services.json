@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "458721112456",
+    "project_id": "teste-login-96e39",
+    "storage_bucket": "teste-login-96e39.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:458721112456:android:ec7423a9c7b998875dca3d",
+        "android_client_info": {
+          "package_name": "br.com.test_login"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "458721112456-5nhg58rqijbnj1ftbccnk9tb09hidora.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMfSRDoaGBSG9jRA9tOs6P6AZficYI11c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "458721112456-5nhg58rqijbnj1ftbccnk9tb09hidora.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
